@@ -5,7 +5,7 @@
 *
 **********************/
 
-llet posts = document.querySelectorAll('.feed-w');
+let posts = document.querySelectorAll('.feed-w');
 let arrPost = [];
 console.log (`Итого постов: ${posts.length}`)
 
