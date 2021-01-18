@@ -7,7 +7,7 @@
 
 let posts = document.querySelectorAll('.feed-w');
 let arrPost = [];
-console.log (`Итого постов: ${posts.length}`)
+console.log (`Итого постов: ${posts.length}`);
 
 // Разбираем новости на элементы (заголовок, лайки, репосты и так далее)
 for (i = 0; i < posts.length; i++){
