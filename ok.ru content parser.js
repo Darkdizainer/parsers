@@ -12,10 +12,8 @@ let setup = {
 }
 console.log (`Итого постов: ${setup.posts.length}`)
 
-
 // Разбираем новости на элементы (заголовок, лайки, репосты и так далее)
 for (i = 0; i < setup.posts.length; i++){
-    console.log (`Step: ${i}`)
     let a = setup.posts[i].querySelectorAll('.js-count');
     let baseURL = setup.posts[i].querySelectorAll('a');
     let textBlock = setup.posts[i].querySelector('.media-text_cnt');
@@ -47,7 +45,7 @@ setup.arrPost.sort(function(a, b){
 });
 
 //Вывод на экран результатов
-document.write (`ВСЕГО ПОСТОВ ${setup.arrPost.length}`);
+document.write (`<div style="width: 100%; margin: 0 0 25px 0;">ВСЕГО ПОСТОВ ${setup.arrPost.length}</div>`);
 for (ii=0;ii<setup.arrPost.length;ii++){
     document.write (`
         <div class='contentWrapper'>
@@ -61,8 +59,6 @@ for (ii=0;ii<setup.arrPost.length;ii++){
         </div>
     `)
 };
-
-
 
 document.write (`
 <style>
