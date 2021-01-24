@@ -6,8 +6,6 @@
 **********************/
 
 let setup = {
-    sortType: 'like', // Тип сортировки like - по лайкам; comm - по комментам; repost - по репостам
-    sort: 1, // Порядок сортировки 1 - от большего к меньшему; 2 - от меньшего к большему
     posts: document.querySelectorAll('.feed-w'), // Сбор всех постов по классу .feed-w
     arrPost: [] // Пустой массив для сортировки
 }
@@ -33,16 +31,11 @@ for (i = 0; i < setup.posts.length; i++){
     setup.arrPost.push({id: i, text: textBlock.textContent, komm: a[0].textContent, repost: a[1].textContent, like: a[2].textContent, link: baseURL[2]},);
 };
 
-// Определяем тип и порядок сортировки
-if (setup.sort == 1) {
-    setup.sort = `b.${setup.sortType}-a.${setup.sortType}`;
-} else {
-    setup.sort = `a.${setup.sortType}-b.${setup.sortType}`;
-};
-
 //Сортируем массив по параметру выбранному в настройках
 setup.arrPost.sort(function(a, b){
-    return setup.sort
+    return b.like-a.like
+    //return b.repost-a.repost
+    //return b.komm-a.komm
 });
 
 //Вывод на экран результатов
