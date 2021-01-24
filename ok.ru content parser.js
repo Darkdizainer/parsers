@@ -58,7 +58,6 @@ for (ii=0;ii<setup.arrPost.length;ii++){
 //переключение цветa у опубликованных новостей + удаление чекбокса
 function clickToggle (a){
     a.classList.toggle('postedNews');
-    console.log (a);
 };
 
 document.write (`
