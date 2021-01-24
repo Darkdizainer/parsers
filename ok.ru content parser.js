@@ -43,7 +43,10 @@ document.write (`<div style="width: 100%; margin: 0 0 25px 0; text-align: center
 for (ii=0;ii<setup.arrPost.length;ii++){
     document.write (`
         <div class='contentWrapper' id='n${setup.arrPost[ii].id}'>
-        <input type="checkbox" class="checkbox" title="Новость ОПУБЛИКОВАНА!!!" onclick="clickToggle(n${setup.arrPost[ii].id})">
+            <div class="headerWrap">
+                <p class="checkboxCon"><span class="checkboxConText">Новость опубликована</span><input type="checkbox" class="checkbox" title="Новость ОПУБЛИКОВАНА!!!" onclick="clickToggle(n${setup.arrPost[ii].id})"></p>
+                <p class="removeCon"><span class="remove" onclick="clickRemove(n${setup.arrPost[ii].id})">x</span></p>
+            </div>
         <h2 class="title">${setup.arrPost[ii].text}</h2>
             <ul>
                 <li title='Комментариев:'>${setup.arrPost[ii].komm}<br><span class='smallTxt'>Коммент</span></li>
@@ -57,15 +60,24 @@ for (ii=0;ii<setup.arrPost.length;ii++){
 
 //переключение цветa у опубликованных новостей + удаление чекбокса
 function clickToggle (a){
-    a.classList.toggle('postedNews');
+    a.classList.toggle('postedNews')
+};
+// Удаление элемента
+function clickRemove (a){
+    a.remove()
 };
 
 document.write (`
 <style>
     * {padding: 0; margin: 0; box-sizing: border-box;}
     body {min-width: 610px; max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around;}
-    .checkbox {width: 100%; margin: 0 0 10px 0;}
-    .contentWrapper {width: 300px; margin: 0 0 15px 0; border: 1px solid #a0a0a0; padding: 10px;}
+    .headerWrap {width: 100%; display: flex; flex-wrap: nowrap; justify-content: space-between; position: absolute; left: 0; top: 4px;}
+    .checkboxCon {padding: 0 0 0 25px; display: flex; flex-wrap: nowrap; justify-content: center;}
+    .checkboxConText {font-size: 80%;}
+    .checkbox {width: 20px;}
+    .removeCon {cursor: pointer;}
+    .remove {padding: 5px 10px; background: red;}
+    .contentWrapper {width: 300px; margin: 0 0 15px 0; border: 1px solid #a0a0a0; padding: 30px 10px 10px 10px; position: relative;}
     .contentWrapper h2 {font-size: 0.9em; font-weight: 100; margin: 0 0 10px 0;}
     .contentWrapper ul {width: 100%; display: flex; justify-content: space-around;}
     .contentWrapper ul li {list-style-type: none; width: fit-content; text-align: center;}
