@@ -71,7 +71,7 @@ function clickToggle (a){
 document.write (`
 <style>
     * {padding: 0; margin: 0; box-sizing: border-box;}
-    body {width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around;}
+    body {min-width: 610px; max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-around;}
     .checkbox {width: 100%; margin: 0 0 10px 0;}
     .contentWrapper {width: 300px; margin: 0 0 15px 0; border: 1px solid #a0a0a0; padding: 10px;}
     .contentWrapper h2 {font-size: 0.9em; font-weight: 100; margin: 0 0 10px 0;}
