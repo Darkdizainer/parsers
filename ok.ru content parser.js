@@ -1,11 +1,8 @@
 /*******************
-* Парсер контента для Одноклассников ok.ru, скрипт выводит все новости заменяя страницу одноклассников, показывает название, репосты, комменты и ссылку на пост.
-* v 1.2
+* Парсер контента для Одноклассников ok.ru, скрипт выводит все новости заменяя страницу одноклассников, показывает название, репосты, 
+  комменты и ссылку на пост.
+* v 1.2.1
 * Create: Darkdizainer
-
-UPD
-// Добавить кнопку изменения цвета опубликованной новости или удаление оной.
-// На ссылки по которым был переход, смену цвета поставить
 **********************/
 
 let setup = {
@@ -33,7 +30,7 @@ for (i = 0; i < setup.posts.length; i++){
     };
 
     // Загоняем в массив объекты с данными
-    setup.arrPost.push({text: textBlock.textContent, komm: a[0].textContent, repost: a[1].textContent, like: a[2].textContent, link: baseURL[2]},);
+    setup.arrPost.push({id: i, text: textBlock.textContent, komm: a[0].textContent, repost: a[1].textContent, like: a[2].textContent, link: baseURL[2]},);
 };
 
 // Определяем тип и порядок сортировки
@@ -49,11 +46,12 @@ setup.arrPost.sort(function(a, b){
 });
 
 //Вывод на экран результатов
-document.write (`<div style="width: 100%; margin: 0 0 25px 0;">ВСЕГО ПОСТОВ ${setup.arrPost.length}</div>`);
+document.write (`<div style="width: 100%; margin: 0 0 25px 0; text-align: center;">ВСЕГО ПОСТОВ ${setup.arrPost.length}</div>`);
 for (ii=0;ii<setup.arrPost.length;ii++){
     document.write (`
-        <div class='contentWrapper'>
-            <h2>${setup.arrPost[ii].text}</h2>
+        <div class='contentWrapper' id='n${setup.arrPost[ii].id}'>
+        <input type="checkbox" class="checkbox" title="Новость ОПУБЛИКОВАНА!!!" onclick="clickToggle(n${setup.arrPost[ii].id})">
+        <h2 class="title">${setup.arrPost[ii].text}</h2>
             <ul>
                 <li title='Комментариев:'>${setup.arrPost[ii].komm}<br><span class='smallTxt'>Коммент</span></li>
                 <li title='Репосты:'>${setup.arrPost[ii].repost}<br><span class='smallTxt'>Репост</span></li>
@@ -64,15 +62,24 @@ for (ii=0;ii<setup.arrPost.length;ii++){
     `)
 };
 
+//переключение цветa у опубликованных новостей + удаление чекбокса
+function clickToggle (a){
+    a.classList.toggle('postedNews');
+    console.log (a);
+};
+
 document.write (`
 <style>
-    * {padding: 0; margin: 0;}
+    * {padding: 0; margin: 0; box-sizing: border-box;}
     body {display: flex; flex-wrap: wrap; justify-content: space-around;}
-    .contentWrapper {width: 300px; /*box-sizing: border-box;*/ margin: 0 0 15px 0; border: 1px solid #a0a0a0; padding: 10px;}
+    .checkbox {width: 100%; margin: 0 0 10px 0;}
+    .contentWrapper {width: 300px; margin: 0 0 15px 0; border: 1px solid #a0a0a0; padding: 10px;}
     .contentWrapper h2 {font-size: 0.9em; font-weight: 100; margin: 0 0 10px 0;}
     .contentWrapper ul {width: 100%; display: flex; justify-content: space-around;}
     .contentWrapper ul li {list-style-type: none; width: fit-content; text-align: center;}
     .smallTxt {font-size: 0.5em;}
     .contentWrapper a {display: block; margin: 15px 0 0 0; padding: 10px 0; text-align: center; background: #eee;}
+    .contentWrapper a:visited {background: purple;}
+    .postedNews {background: red; color: white;}
 </style>
 `);
