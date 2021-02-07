@@ -15,7 +15,7 @@ console.log (`Итого постов: ${setup.posts.length}`)
 for (i = 0; i < setup.posts.length; i++){
     let a = setup.posts[i].querySelectorAll('.js-count');
     let baseURL = setup.posts[i].querySelectorAll('a');
-    let textBlock = setup.posts[i].querySelector('.media-text_cnt');
+    let textBlock = setup.posts[i].querySelector('.media-status_cnt'); //.media-text_cnt
     
     // ФИЛЬТРЫ
     // Убираем ненужное
