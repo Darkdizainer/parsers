@@ -28,8 +28,8 @@ for (i = 0; i < setup.posts.length; i++){
     };
 
     // Загоняем в массив объекты с данными
-    setup.arrPost.push({id: i, text: textBlock.textContent, komm: a[0].textContent, repost: a[1].textContent, like: a[2].textContent, link: baseURL[3]},);
-    console.log (baseURL[3].href)
+    setup.arrPost.push({id: i, text: textBlock.textContent, komm: a[0].textContent, repost: a[1].textContent, like: a[2].textContent.replace(/\s+/g, ''), link: baseURL[3]},);
+    //console.log (baseURL[3].href)
 };
 
 //Сортируем массив по параметру выбранному в настройках
