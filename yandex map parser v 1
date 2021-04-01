@@ -1,0 +1,75 @@
+let firmCon = document.querySelector('.card-businesses-list__list');
+let firmArr = firmCon.querySelectorAll('.search-snippet-view');
+let allCard = document.querySelector('.toponym-card-view');
+
+//console.log (firmArr)
+document.write (`
+<style type="text/css">
+	table, tr {width: 100%; margin: 0; padding: 0;}
+	td {width: max-content; padding: 0 15px;}
+</style>
+
+<table>
+`)
+
+for (i=0;i<=firmArr.length;i++) {
+	const information = {
+		title: firmArr[i].querySelector('.search-business-snippet-view__title'),
+		link: firmArr[i].querySelector('.search-snippet-view__link-overlay'),
+		adress: allCard.querySelector('.toponym-card-title-view__description'),
+		adress1: allCard.querySelector('.card-title-view__title'),
+		adress2: allCard.querySelector('.toponym-card-title-view__coords-badge'),
+		categories: firmArr[i].querySelector('.search-business-snippet-view__categories')
+	}
+
+	document.write (`
+		<tr>
+			<td>${i+1}</td>
+			<td>${information.title.textContent}</td>
+			<td><a href="${information.link.href}" target="_blank">${information.link.href}</a></td> `)
+				if (information.categories != null) {
+				let category = information.categories.querySelectorAll('.search-business-snippet-view__category');
+				document.write (`<td>${category[0].textContent}</td>`);
+				}
+	document.write (`
+			<td>${information.adress.textContent}</td>
+			<td>${information.adress1.textContent}</td>
+			<td>${information.adress2.textContent}</td>
+		`)
+	document.write (`</tr>`);
+
+}
+
+document.write (`
+	</table>
+`)
+
+
+
+
+
+/************************************************/
+let firmCon = document.querySelector('.card-businesses-list__list');
+let firmArr = firmCon.querySelectorAll('.search-snippet-view');
+
+for (i=0;i<=firmArr.length;i++) {
+	const information = {
+		title: firmArr[i].querySelector('.search-business-snippet-view__title').textContent,
+		link: firmArr[i].querySelector('.search-snippet-view__link-overlay').href,
+		adress: document.querySelector('.toponym-card-title-view__description').textContent,
+		adress1: document.querySelector('.card-title-view__title').textContent,
+		adress2: document.querySelector('.toponym-card-title-view__coords-badge').textContent,
+		categories: firmArr[i].querySelector('.search-business-snippet-view__categories')
+	}
+
+	console.log (i);
+	console.log (information.title);
+	console.log (information.link);
+	console.log (information.adress + ' ' + information.adress1);
+	console.log (information.adress2);
+	if (information.categories != null) {
+		let category = information.categories.querySelectorAll('.search-business-snippet-view__category');
+		console.log (category[0].textContent);
+	}
+	console.log ('');
+}
