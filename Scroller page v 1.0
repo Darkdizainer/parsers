@@ -1,0 +1,23 @@
+/* 
+  Скроллер страницы с автоподгрузкой контента
+  Скролит страничку вниз до самого конца или до максимально указанного значения (на всякий случай стоит проверка на бесконечность если не нужна удаляем || num >= 5000).
+*/
+
+//        V 1.0
+let sel = '#zen'; //Селектор контейнера который расширяется вместе со страницей #zen или .ns-view-app у почты
+let con = document.querySelector(sel).offsetHeight; // Высота страницы (динамичный элемент)
+let max = 0; // Максимальное количество скроллов 0 бесконечно
+let num = 1;
+
+scrollBy(0, con);
+let interval = setInterval(()=>{
+	num++;
+	scrollBy(0, con);
+	if (con == document.querySelector(sel).offsetHeight){
+        console.log ('СТОП Это конец страницы')
+		clearInterval(interval);
+	} else if (num == max || num >= 5000) {
+		console.log ('Экстренный стоп')
+		clearInterval(interval);
+	};
+}, 1000);
