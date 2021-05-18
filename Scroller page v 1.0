@@ -21,3 +21,46 @@ let interval = setInterval(()=>{
 		clearInterval(interval);
 	};
 }, 1000);
+
+
+/*
+собираем все настройки
+получаем высоту страницы
+Скроллим вниз 
+Через 2 секунды проверяем не увеличилась ли высота
+если да то запускам рекурсию
+если нет, закругляемся
+*/
+
+const set = {
+	el: '#zen', // блок идущий на всю длинну
+	he: '', // width
+	maxScroll: 0
+};
+
+
+function height () {
+	set.he = document.querySelector('#zen').offsetHeight;
+}
+
+function scroll (){
+	scrollBy(0, document.querySelector('#zen').offsetHeight);
+}
+
+function recurse () {
+
+	if (set.maxScroll == 10) {
+		console.log ('Всё конец');
+		return
+	};
+
+	setTimeout(scroll, 250); // Скроллим
+	set.maxScroll++; // Увеличиваем счетчик
+	console.log (set.maxScroll);
+		if (set.he == document.querySelector('#zen').offsetHeight) {
+			return	
+		}
+	setTimeout(height, 250) //Перезаписываем высоту
+	setTimeout(recurse, 500); // Рекурсия
+
+};
