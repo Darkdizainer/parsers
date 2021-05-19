@@ -33,19 +33,18 @@ let interval = setInterval(()=>{
 */
 
 const set = {
-	el: '#zen', // блок идущий на всю длинну
+	el: '.media-grid__row_visible_yes', // блок идущий на всю длинну
 	he: '', // width
 	maxScroll: 0
 };
 
-
 function height () {
-	set.he = document.querySelector('#zen').offsetHeight;
-}
+	set.he = document.querySelector(set.el).offsetHeight;
+};
 
 function scroll (){
-	scrollBy(0, document.querySelector('#zen').offsetHeight);
-}
+	scrollBy(0, document.querySelector(set.el).offsetHeight);
+};
 
 function recurse () {
 
@@ -57,10 +56,10 @@ function recurse () {
 	setTimeout(scroll, 250); // Скроллим
 	set.maxScroll++; // Увеличиваем счетчик
 	console.log (set.maxScroll);
-		if (set.he == document.querySelector('#zen').offsetHeight) {
+		if (set.he == document.querySelector(set.el).offsetHeight) {
 			return	
 		}
 	setTimeout(height, 250) //Перезаписываем высоту
-	setTimeout(recurse, 500); // Рекурсия
+	setTimeout(recurse, 1800); // Рекурсия
 
 };
