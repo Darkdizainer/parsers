@@ -27,3 +27,6 @@ document.querySelectorAll('.info').forEach((el, num) => {
  * 
 *************************************************************/
 
+document.querySelectorAll('.fans_fan_name').forEach((el, num) => {
+  document.write (`Name: ${el.textContent} Link: ${el.querySelector('a')}<br>`)
+})
