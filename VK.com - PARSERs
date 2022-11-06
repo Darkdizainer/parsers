@@ -1,0 +1,29 @@
+/********************************
+ *  Парсер групп ВК
+ *  Выводит списком на страницу
+*********************************/
+
+document.querySelectorAll('.info').forEach((el, num) => {
+  let members = '';
+
+  if (el.querySelectorAll('.labeled')[2]) {
+    if (el.querySelectorAll('.labeled').length > 3) {
+      members = el.querySelectorAll('.labeled')[3].textContent
+    } else {
+      members = el.querySelectorAll('.labeled')[2].textContent
+    }
+  } else {
+    members = el.querySelectorAll('.labeled')[1].textContent
+  }
+
+  document.write (`Num: ${num} Link:  ${el.querySelectorAll('.labeled')[0].querySelector('a')} Name:  ${el.querySelectorAll('.labeled')[0].querySelector('a').textContent} Members:  ${members}<br>`)
+})
+
+
+
+
+/***********************************************************
+ * Парсер пользователей ВК
+ * 
+*************************************************************/
+
