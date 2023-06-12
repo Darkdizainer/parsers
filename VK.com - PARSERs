@@ -30,3 +30,24 @@ document.querySelectorAll('.info').forEach((el, num) => {
 document.querySelectorAll('.fans_fan_name').forEach((el, num) => {
   document.write (`Name: ${el.textContent} Link: ${el.querySelector('a')}<br>`)
 })
+
+
+
+/***********************************************************
+ * Скрипт удаления зпдпнных в массиве пользователей, скрипт вставляет ссылку на анкету пользователя в поисковую строку, нажимает на поиск, проверяет есть ли кнопка удалить пользователя и нажимает ее.
+ * ?act=users
+*************************************************************/
+let users = ['http://vk.com/id79519451', 'http://vk.com/id90063003'];
+for (let i = 0; i < users.length; i++) {
+    document.querySelector('.ui_search_field._field').value = users[i];
+    setTimeout(() => {
+        document.querySelector('.ui_search_button_search._ui_search_button_search').click();
+    }, 2000);
+    setTimeout(() => {
+        let button = document.querySelector('.group_u_action');
+        if (button.textContent == 'Удалить из сообщества') {
+            button.click();
+        }
+    }, 8000);
+    await new Promise(resolve => setTimeout(resolve, 8000));
+}
