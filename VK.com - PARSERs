@@ -45,8 +45,10 @@ for (let i = 0; i < users.length; i++) {
     }, 2000);
     setTimeout(() => {
         let button = document.querySelector('.group_u_action');
-        if (button.textContent == 'Удалить из сообщества') {
+        let title = document.querySelector('.group_u_title');
+        if (button.textContent == 'Удалить из сообщества'  && title.textContent == 'DELETED') {
             button.click();
+            console.log (i);
         }
     }, 8000);
     await new Promise(resolve => setTimeout(resolve, 8000));
