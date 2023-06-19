@@ -35,9 +35,9 @@ document.querySelectorAll('.fans_fan_name').forEach((el, num) => {
 
 /***********************************************************
  * Скрипт удаления зпдпнных в массиве пользователей, скрипт вставляет ссылку на анкету пользователя в поисковую строку, нажимает на поиск, проверяет есть ли кнопка удалить пользователя и нажимает ее.
- * ?act=users
+ * Проверяет по имени DELETED и по аватарке собаки и по наличию кнопки удалить.
 *************************************************************/
-let users = ['http://vk.com/id79519451', 'http://vk.com/id90063003'];
+let users = ['https://vk.com/id566344', 'http://vk.com/id674158831'];
 for (let i = 0; i < users.length; i++) {
     document.querySelector('.ui_search_field._field').value = users[i];
     setTimeout(() => {
@@ -46,7 +46,8 @@ for (let i = 0; i < users.length; i++) {
     setTimeout(() => {
         let button = document.querySelector('.group_u_action');
         let title = document.querySelector('.group_u_title');
-        if (button.textContent == 'Удалить из сообщества'  && title.textContent == 'DELETED') {
+        let img = document.querySelector('.group_u_photo_img');
+        if (button.textContent == 'Удалить из сообщества' && title.textContent == 'DELETED' || img.src.includes('70U0FUKKdCE.png')) {
             button.click();
             console.log (i);
         }
